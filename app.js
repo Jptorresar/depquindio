@@ -1,16 +1,19 @@
-const db = require('./database')
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors')
 
-//Datos de prueba
-const datos = {
-    nombre: "Juan Pablo",
-    apellido:"Torres Arias"
-}
+const app = express();
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(cors())
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(express.urlencoded({extended:false}))
+app.use('/api/jugadores',require('./routers/get.js'))
+const PORT = process.env.PORT || 8000;
 
-//Crear consulta
-const consultaSQL = 'INSERT INTO jugador SET ?';
-db.consultaSQL(consultaSQL,datos);
-
-consultaSQL = 'DELETE FROM JUGADOR';
-db.consultaSQL(consultaSQL,datos);
-
-db.cerrarConexion();
+//Initialize server
+app.listen(PORT, () =>{
+    console.log(`Listening on ${PORT}`);
+});

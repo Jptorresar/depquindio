@@ -21,15 +21,19 @@ connection.connect((err) => {
   });
 
 //Funcion para realizar operaciones
-function consultaSQL(consulta,datos){
-  connection.query(consulta, datos, (error, resultados) => {
-    if (error) {
-      console.error('Error al insertar datos en la tabla: ' + error.message);
-      return;
-    }
-    console.log('Datos insertados con éxito. ID del nuevo registro:', resultados.insertId);
+function consultaSQL(consulta, datos) {
+  return new Promise((resolve, reject) => {
+    connection.query(consulta, datos, (error, resultados) => {
+      if (error) {
+        console.error('Error al realizar la consulta: ' + error.message);
+        reject(error);
+      } else {
+        resolve(resultados);
+      }
+    });
   });
 }
+
 //Cerrar conexion
 function cerrarConexion(){
   connection.end((err) => {
