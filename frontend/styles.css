@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ECF0F1;
+}
+
+header, footer {
+    background-color: #2C3E50;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav, footer h1 {
+    display: inline-block;
+}
+
+nav ul, footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li, footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #ffcc00;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+main div {
+    width: 48%; /* Ancho del 48% para dejar un pequeño espacio entre el campo de texto y la imagen */
+}
+
+img {
+    max-width: 100%; /* Asegura que la imagen no supere el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
